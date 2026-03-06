@@ -1,7 +1,15 @@
 import { Elysia } from "elysia";
+import { CloudflareAdapter } from "elysia/adapter/cloudflare-worker"
 
-const app = new Elysia().get("/", () => "Hello Elysia").listen(3000);
+interface Env {
+}
 
-console.log(
-  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
-);
+// Create the main app logic
+// We don't initialize env here, but expect it to be available in the store
+const app = new Elysia({
+  adapter: CloudflareAdapter,
+})
+  .get("/", () => "Hello from Cloudflare Workers + Elysia")
+  .compile()
+
+export default app
