@@ -1,10 +1,34 @@
 name = "taiju"
-main = "src/index.ts"
-compatibility_date = "2026-03-01"
+main = ".open-next/worker.js"
+compatibility_date = "2026-03-05"
+compatibility_flags = ["nodejs_compat", "global_fetch_strictly_public"]
+dev.port = 1573
+routes = [{ pattern = "zhangxinwei.xx.kg", custom_domain = true }]
 observability = { enabled = true }
 
-assets = { directory = "public" }
+[secrets]
+required = [ "API_KEY" ]
+
+[[kv_namespaces]]
+binding = "WEIGHT_KV"
+id = "546d41942d944afa8a9097ac611a5121"
+preview_id = "5f520ffd0a0e49d3857f5bb487570864"
 
 [[analytics_engine_datasets]]
 binding = "TAIJU_ENGINE"
 dataset = "taiju"
+
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
+
+# Self-reference service binding, the service name must match the worker name
+# see https://opennext.js.org/cloudflare/caching
+[[services]]
+binding = "WORKER_SELF_REFERENCE"
+service = "taiju"
+
+# Enable image optimization
+# see https://opennext.js.org/cloudflare/howtos/image
+[images]
+binding = "IMAGES"

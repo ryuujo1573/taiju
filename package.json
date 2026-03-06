@@ -1,23 +1,55 @@
 {
   "name": "taiju",
   "private": true,
-  "version": "1.0.50",
+  "version": "2026.3.0",
   "scripts": {
-    "dev": "wrangler dev",
-    "start": "wrangler dev",
-    "deploy": "wrangler deploy",
-    "cf-typegen": "wrangler types"
+    "dev": "next dev",
+    "lint": "biome check",
+    "format": "biome format --write",
+    "build": "next build",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
   "dependencies": {
+    "@elysiajs/eden": "^1.4.8",
+    "@mdx-js/loader": "^3.1.1",
+    "@mdx-js/react": "^3.1.1",
+    "@next/mdx": "^16.1.6",
+    "@opennextjs/cloudflare": "^1.17.1",
     "@sinclair/typebox": "^0.34.48",
+    "@tanstack/react-query": "^5.90.21",
+    "@types/mdx": "^2.0.13",
+    "chart.js": "^4.5.1",
     "elysia": "latest",
-    "openapi-types": "^12.1.3"
+    "next": "16.1.6",
+    "openapi-types": "^12.1.3",
+    "react": "19.2.4",
+    "react-chartjs-2": "^5.3.1",
+    "react-dom": "19.2.4"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.4.5",
     "@cloudflare/workers-types": "^4.20260305.1",
+    "@tailwindcss/postcss": "^4.2.1",
+    "@types/bun": "^1.3.10",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "bun-types": "latest",
+    "tailwindcss": "^4.2.1",
+    "typescript": "^5.9.3",
+    "vite": "npm:rolldown-vite",
     "wrangler": "^4.71.0"
   },
   "module": "src/index.js",
-  "type": "module"
+  "type": "module",
+  "ignoreScripts": [
+    "sharp",
+    "unrs-resolver"
+  ],
+  "trustedDependencies": [
+    "sharp",
+    "unrs-resolver"
+  ]
 }

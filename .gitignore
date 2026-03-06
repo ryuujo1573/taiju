@@ -30,11 +30,18 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
+# testing
+/coverage
+
 # app specific
 .vercel
 .wrangler
 .dbg
 .idea
+
+# next.js
+/.next/
+/out/
 
 **/*.trace
 **/*.zip
@@ -43,3 +50,9 @@ yarn-error.log*
 **/*.log
 package-lock.json
 **/*.bun
+
+*.tsbuildinfo
+next-env.d.ts
+
+# OpenNext
+.open-next

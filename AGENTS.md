@@ -17,7 +17,7 @@ For all limits and quotas, retrieve from the product's `/platform/limits/` page.
 | `npx wrangler deploy` | Deploy to Cloudflare |
 | `npx wrangler types` | Generate TypeScript types |
 
-Run `wrangler types` after changing bindings in wrangler.jsonc.
+Run `wrangler types` after changing bindings in wrangler.toml.
 
 ## Node.js Compatibility
 
