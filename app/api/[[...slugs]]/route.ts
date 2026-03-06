@@ -2,7 +2,11 @@ import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { Elysia, t } from "elysia";
 import { CloudflareAdapter } from "elysia/adapter/cloudflare-worker";
 
-export const app = new Elysia({ adapter: CloudflareAdapter, prefix: "/api" })
+export const app = new Elysia({
+  aot: false,
+  adapter: CloudflareAdapter,
+  prefix: "/api",
+})
   .derive(async ({ request }) => {
     // Basic API Key validation
     const authHeader = request.headers.get("Authorization");
@@ -61,8 +65,7 @@ export const app = new Elysia({ adapter: CloudflareAdapter, prefix: "/api" })
         date: t.Optional(t.String()),
       }),
     },
-  )
-  .compile();
+  );
 
 export const OPTIONS = app.fetch;
 export const HEAD = app.fetch;
