@@ -30,8 +30,11 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-# vercel
+# app specific
 .vercel
+.wrangler
+.dbg
+.idea
 
 **/*.trace
 **/*.zip
